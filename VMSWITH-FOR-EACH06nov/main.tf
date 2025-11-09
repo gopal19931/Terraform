@@ -58,11 +58,14 @@ os_disk {
   storage_account_type = each.value.os_disk.storage_account_type
   disk_size_gb         = each.value.os_disk.disk_size_gb
 }
-
   source_image_reference {
     publisher = each.value.source_image_reference.publisher
     offer     = each.value.source_image_reference.offer
     sku       = each.value.source_image_reference.sku
     version   = each.value.source_image_reference.version
   }
+
+  depends_on = [
+    azurerm_network_interface.nic
+  ]
 }
