@@ -49,4 +49,12 @@ stages:
             command: 'plan'
             workingDirectory: '$(Pipeline.Workspace)'
             providerServiceConnection: 'gopikrishna'    
+
+          - task: TerraformCLI@2
+           displayName: 'Terraform Apply'
+           inputs:
+            command: 'apply'
+            workingDirectory: '$(Pipeline.Workspace)'
+            providerServiceConnection: 'gopikrishna'
+            commandOptions: '-auto-approve'  
         
